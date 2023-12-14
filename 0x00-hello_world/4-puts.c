@@ -2,7 +2,6 @@
 
 /**
  * main - Lrints a string with only puts()
- * @str: string to be printed
  *
  * Return: Alwats O (Success)
  */
