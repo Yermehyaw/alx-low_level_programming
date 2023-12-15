@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /**
  * main - Prints a string to stderr
@@ -8,6 +9,8 @@
 
 int main(void)
 {
-	fwrite("2, and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 60);
+	char *string = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+
+	fwrite(string, sizeof(char), strlen(string), stderr);
 	return (1);
 }
