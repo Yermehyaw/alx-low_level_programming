@@ -10,8 +10,6 @@
 
 int mul(int a, int b)
 {
-	int res;
-
-	res = a * b;
+	_putchar(a * b);
 	return (0);
 }
