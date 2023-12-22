@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * _islower  - Checks for lowercase characters
+ * _isupper  - Checks for uppercase characters
  * @c: Value to br checked
  *
  * Return: O (Success)
  */
 
-int _islower(int c)
+int _isupper(int c)
 {
-	if (c > 65 && c < 91)
+	if (c > 64 && c < 91)
 		return (1);
 	else
 		return (0);
