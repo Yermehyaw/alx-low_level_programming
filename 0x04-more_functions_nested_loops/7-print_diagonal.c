@@ -16,7 +16,7 @@ void print_diagonal(int n)
 		_putchar('\n');
 	else
 	{
-		for (m = 1; m <= n; ++m)
+		for (m = 0; m <= n; ++m)
 		{
 			p = m;/* Spaces increases with diagonal length */
 			while (p > 0)
