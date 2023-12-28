@@ -1,23 +1,28 @@
 #include "main.h"
 
 /**
- * more_number - Print 0-14 10x
+ * more_numbers - Print 0-14 10x
  */
 
-void more_number(void)
+void more_numbers(void)
 {
 	int i;
 	int j; /* no of times to be printed i.e 10x */
+	int y; /* Unit value in 10 - 14 */
 
-	for (j = 0; j <= 10; ++j)
+	for (j = 0; j < 10; ++j)/* Starting from 0, j < 10 to print 10x */
 	{
 		i = 48;
 
 		while (i < 58)
+		{
 			_putchar(i);
+			++i;
+		}
 		/* To print 10-14 */
 		i = 49; /* Tens value */
-		int y = 48; /* Unit value in 10 - 14 */
+
+		y = 48; /* Unit value in 10 - 14 */
 
 		while ((i = 49) && (y <= 52))
 		{
@@ -25,7 +30,6 @@ void more_number(void)
 			_putchar(y);
 			++y; /* only y is incremented */
 		}
-		_putchar('\n');
-		++j; /* move to next line */
+		_putchar('\n'); /* move to next line */
 	}
 }
