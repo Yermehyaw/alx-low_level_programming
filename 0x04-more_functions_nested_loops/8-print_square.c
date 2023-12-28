@@ -28,8 +28,10 @@ void print_square(int size)
 				_putchar('#');
 				--b;
 			}
+			b = size;
 			_putchar('\n');
 			--l;
 		}
+		_putchar('\n');
 	}
 }
