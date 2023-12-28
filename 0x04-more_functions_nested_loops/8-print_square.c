@@ -32,6 +32,5 @@ void print_square(int size)
 			_putchar('\n');
 			--l;
 		}
-		_putchar('\n');
 	}
 }
