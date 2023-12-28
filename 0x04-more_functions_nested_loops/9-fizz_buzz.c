@@ -10,7 +10,7 @@ int main(void)
 {
 	int i = 1;
 
-	while (i <= 100)
+	while (i <= 99)
 	{
 		if ((i % 15) == 0)
 			printf("FizzBuzz ");
@@ -22,5 +22,10 @@ int main(void)
 			printf("%d ", i);
 		++i;
 	}
+	printf("Buzz\n"); /**
+			   * Checker requirement
+			   * last entry must have no whitespace,
+			   * but ends with newline
+			   */
 	return (0);
 }
