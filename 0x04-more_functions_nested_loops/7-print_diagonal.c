@@ -16,9 +16,14 @@ void print_diagonal(int n)
 		_putchar('\n');
 	else
 	{
-		for (m = 0; m <= n; ++m)
+
+		for (m = 0; m < n; ++m) /* m < n, because m is init to  0 */
 		{
 			p = m;/* Spaces increases with diagonal length */
+			/* p -= 1; */  /**
+				 * but less than m by one,
+				 * just an unncecessary alx req
+				 */
 			while (p > 0)
 			{
 				_putchar(' ');
