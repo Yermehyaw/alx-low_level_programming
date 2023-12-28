@@ -13,7 +13,7 @@ void print_line(int n)
 	{
 		int m = n; /* To represent the unknown value of n */
 
-		for (m = 0; m <= n; ++m)
+		for (m = 1; m <= n; ++m) /* m is 1 to ensure proper cointing */
 			_putchar('_');
 		_putchar('\n');
 	}
