@@ -17,5 +17,5 @@ int _abs(int c)
 			return (c);
 	}
 	else
-		return ("Someone is trying to hack your program");
+		return (911);
 }
