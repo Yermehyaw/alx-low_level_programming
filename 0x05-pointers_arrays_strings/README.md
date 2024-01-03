@@ -8,3 +8,4 @@ The following functions/programs will:
 1: Swap the values of two variables
 2: Return the length of a string
 3: Print a string of any length
+4: Print a reversed string followed by a newline
