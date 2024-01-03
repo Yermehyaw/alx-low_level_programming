@@ -12,10 +12,10 @@ void print_rev(char *s)
 
 	for (i = count = 0; s[i] != '\0'; ++i) /* Just to count the array */
 		;
-	while (i > 0)
+	while (i >= 0)
 	{
 		_putchar(s[i]);
-		--i;
+		i--;
 	}
 	_putchar('\n');
 }
