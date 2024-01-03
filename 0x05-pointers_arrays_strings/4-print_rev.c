@@ -9,7 +9,7 @@ void print_rev(char *s)
 {
 	int i;
 
-	for (i = 0; s[i] != '\0'; ++i) /* Just to count the array */
+	for (i = 0; s[i] != '\0'; i++) /* Just to count the array */
 		;
 	while (i >= 0)
 	{
