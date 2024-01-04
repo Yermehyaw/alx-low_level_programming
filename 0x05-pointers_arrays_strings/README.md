@@ -9,3 +9,4 @@ The following functions/programs will:
 2: Return the length of a string
 3: Print a string of any length
 4: Print a reversed string followed by a newline
+5: Reverse a char array with a pointaer
