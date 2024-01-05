@@ -23,7 +23,7 @@ char *_strncat(char *dest, char *src, int n)
 	len_dest = i;
 	/* Concatenate n bytes of src */
 	i = 0;
-	while (i < n && src[i] = '\0') /*<n and not <=n because i starts at 0*/
+	while (i < n && src[i] != '\0') /*<n and not <=n because i starts at 0*/
 	{
 		dest[len_dest + i] = src[i];
 		++i;
