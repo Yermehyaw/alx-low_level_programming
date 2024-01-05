@@ -10,19 +10,26 @@
  * Return: dest (Success)
  */
 
-char *strcat(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
-	/* Counts the length of dest */
 	int i, j, len_dest;
+
+	/* Counts the length of dest */
+	i = 0;
 	while (dest[i] != '\0')
 	{
 		++i;
-		len_dest = i;
 	}
+	len_dest = i;
 	/* Using dest as the string to which src is appended */
 	j = 0;
-	for (i = 1; src[j] != '\0'; ++i, ++j)
-		dest(len_dest + i) = src[j];
-	dest(len_dest + i + 1) = '\0'; /* Adding the missing null byte */
+	i = 0;
+	while (src[j] != '\0')
+	{
+		dest[len_dest + i] = src[j];
+		++i;
+		++j;
+	}
+	dest[len_dest + i + 1] = '\0'; /* Adding the missing null byte */
 	return (dest);
 }
