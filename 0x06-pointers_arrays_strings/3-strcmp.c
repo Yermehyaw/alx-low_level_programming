@@ -5,7 +5,7 @@
  * @s1: String to be compared
  * @s2: String to be comapred with. I know... Its a tongue twister :)
  *
- * Return: Difference of @s1 and @s2 (Success)
+ * Return: Difference of the first different char in @s1 and @s2 (Success)
  */
 
 int _strcmp(char *s1, char *s2)
@@ -13,15 +13,12 @@ int _strcmp(char *s1, char *s2)
 	int i, j, cmp;
 
 	i = j = 0;
-	/* Count s1 */
-	while (s1[i] != '\0')
+	/* Seek a different char in both strings */
+	while (s1[i] != '\0' && s2[j] != '\0' && s1[i] == s2[j])
+	{
 		++i;
-	i += 1; /* Adding the missing null byte */
-	/* Count s2 */
-	while (s2[j] != '\0')
 		++j;
-	j += 1;
-	/* Comparing them */
-	cmp = i - j;
+	}
+	cmp = s1[i] - s2[j];
 	return (cmp);
 }

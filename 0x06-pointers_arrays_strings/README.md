@@ -6,4 +6,5 @@ except explicitly indicated. The function will:
 0: Concatenate two strings into the first string
 1: Concatenate n bytes of second string into the first
 2: Copies n bytes of a string into another string
-3: Compares two string lenghts and returns the difference
+3: Compares two strings, seeking the first different character
+and returns the difference
