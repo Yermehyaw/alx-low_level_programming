@@ -10,8 +10,10 @@ except explicitly indicated. The function will:
 and returns the difference
 4: Reverses an array of integers
 5: Change lowercase chars to uppercase chars
-6:
-
+6: Capitalize all words in astring in Camel case
+7: Encode/encrypt a string using 1337(leet)
+8: Encode/encrypt a string using ROT13 encryption
+9: Print negative and positive numbers without using long int
 102: Move in memory using a pointer to an int to access and change
 the value of an int array.
 So it is 'illegally' accessing the memory allocation of the array
