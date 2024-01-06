@@ -10,3 +10,9 @@ except explicitly indicated. The function will:
 and returns the difference
 4: Reverses an array of integers
 5: Change lowercase chars to uppercase chars
+6:
+
+102: Move in memory using a pointer to an int to access and change
+the value of an int array.
+So it is 'illegally' accessing the memory allocation of the array
+from the outside (I know... the file is literally called 102-magic.c)
