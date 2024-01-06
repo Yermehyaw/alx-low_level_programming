@@ -11,8 +11,10 @@ and returns the difference
 4: Reverses an array of integers
 5: Change lowercase chars to uppercase chars
 6: Capitalize all words in astring in Camel case
-7: Encode/encrypt a string using 1337(leet)
-8: Encode/encrypt a string using ROT13 encryption
+7: Encode/encrypt a string using 1337(leet), using only one if, two loops,
+no switch statement or ternary operator
+8: Encode/encrypt a string using ROT13 encryption using only one if, two loops,
+no switch statement or ternary operator
 9: Print negative and positive numbers without using long int
 102: Move in memory using a pointer to an int to access and change
 the value of an int array.
