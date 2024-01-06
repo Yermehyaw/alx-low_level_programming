@@ -8,3 +8,5 @@ except explicitly indicated. The function will:
 2: Copies n bytes of a string into another string
 3: Compares two strings, seeking the first different character
 and returns the difference
+4: Reverses an array of integers
+5: Change lowercase chars to uppercase chars
