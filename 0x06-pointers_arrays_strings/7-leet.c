@@ -9,16 +9,16 @@
 
 char *leet(char *s)
 {
-	int i, j;
+	int i, j, len;
 	int a[5] = {4, 3, 7, 0, 1};
 
-	i = j = 0;
-	while (s[i] != '\0')
+	i = j = len = 0;
+	while (s[len] != '\0')
 	{
 		while (j < 5)
 		{
-			if ((s[i] == 65 + (((i - 1) * 4) + 1 / 3)) ||
-			    (s[i] == 97 + (((i - 1) * 4) + 1 / 3)))
+			if ((s[i] == (65 + (((i - 1) * 4) + 1 / 3))) ||
+			    (s[i] == (97 + (((i - 1) * 4) + 1 / 3))))
 			{
 				s[i] = a[j];
 			}
@@ -27,7 +27,8 @@ char *leet(char *s)
 			++i;
 			++j;
 		}
+		++len;
 	}
-	s[i] = '\0'; /* Adding the missing null byte */
+	s[len] = '\0'; /* Adding the missing null byte */
 	return (s);
 }
