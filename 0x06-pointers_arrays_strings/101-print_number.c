@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * print_number - Prints negative and positive integers
@@ -14,12 +15,13 @@ void print_number(int n)
 	int a[10]; /* Assuming  a max size of integers */
 
 	i = 0;
-	if (n > 0)
+	if (n >= 0)
 	{
-		while (n >= 0)
+		while (n > 0)
 		{
 			a[i] = n % 10;
-			n / 10;
+			printf("a[%d] is: %d\n", i, a[i]);
+			n = (n / 10);
 			++i;
 		}
 	}
@@ -27,18 +29,20 @@ void print_number(int n)
 	{
 		i = 0;
 		n = n * (-1); /* Converts to positive integers */
-		while (n >= 0)
+		a[0] = '-';
+		/*	++i; */ /* Starts from second element*/
+		while (n > 0)
 		{
 			a[i] = n % 10;
-			n / 10;
+			printf("a[%d] is: %d\n", i, a[i]);
+			n = n / 10;
 			++i;
 		}
-		n[0] = '-';
 	}
 	/* Printing */
-	while (i >= 0)
+	while (i > 0)
 	{
-		_putchar(a[i - 1]);
 		--i;
+		_putchar('0' + a[i]);
 	}
 }
