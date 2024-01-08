@@ -4,5 +4,6 @@ and practical functions. Except explitly stated all functions will NOT make use
 of any standard library function.
 
 The following functions will:
-0: Copy n bytes of a parameter character into an array
-1: 
+0: Fill n bytes of a parameter character into an array
+1: Copy n bytes of an array into another array
+2:
