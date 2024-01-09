@@ -13,3 +13,5 @@ in the lattar string was discovered (I know... I know... font blame me, blame
 alx :)
 4:
 5: Locate a string in another string
+6: Nil
+7: Print the chessboard using a 2D array
