@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strstr - Find the occurence of a string in another
+ * _strstr - Find the occurence of a string in another
  * @haystack: String to be searched
  * @needle: String to be found
  *
