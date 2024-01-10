@@ -7,3 +7,5 @@ No standard library function will be used except explicitly stated.
 The following functions wil:
 1: Print a string of string of characters
 2: Print the reverse of a string
+3: Return the length of a string
+4: 
