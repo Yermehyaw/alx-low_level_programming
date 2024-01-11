@@ -10,3 +10,6 @@ The following functions wil:
 2: Return the length of a string
 3: Calculate the factorial of an integer
 4: Calculate the exponent of a number
+5: Find the square root of a natural number else returns -1 for numbers
+without a perfect square root
+6: Check for prime numbers, returns 1 else returns 0
