@@ -13,3 +13,4 @@ The following functions wil:
 5: Find the square root of a natural number else returns -1 for numbers
 without a perfect square root
 6: Check for prime numbers, returns 1 else returns 0
+100: Check for a palindromic string
