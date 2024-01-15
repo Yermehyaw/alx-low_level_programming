@@ -63,6 +63,6 @@ int len_str(char *str)
 		return (len);
 	while (str[len] != '\0')
 		len++;
-	len = len + 1;
+	/*len = len + 1;*/
 	return (len);
 }
