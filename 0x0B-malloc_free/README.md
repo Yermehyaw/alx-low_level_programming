@@ -7,3 +7,4 @@ function.
 
 The function will:
 0: Create an array of char and assign it with a function parameter(char)
+1: Create a copy of a string given as a parameter
