@@ -56,13 +56,13 @@ char *str_concat(char *s1, char *s2)
 
 int len_str(char *str)
 {
-	int len;
+	int len, count;
 
-	len = 0;
+	count = len = 0;
 	if (str == NULL)
 		return (len);
-	while (str[len] != '\0')
-		len++;
-	/*len = len + 1;*/
+	while (str[count] != '\0')
+		count++;
+	len = count + 1;
 	return (len);
 }
