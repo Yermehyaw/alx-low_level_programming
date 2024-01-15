@@ -20,13 +20,13 @@ char *str_concat(char *s1, char *s2)
 	if (m == NULL)
 		return (NULL);
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i] != '\0' && s1 != NULL)
 	{
 		m[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j] != '\0')
+	while (s2[j] != '\0' && s2 != NULL)
 	{
 		m[i] = s2[j];
 		i++;
