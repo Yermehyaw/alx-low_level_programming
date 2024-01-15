@@ -6,3 +6,6 @@ x04: More C functions and Nested loops functions/programs
 x05: Pointers, Arrays and Strings Functions
 x06: More Pointers, Arrays and Strings Functions
 x07: Even more Pointers, Arrays and Strings Functions/Programs
+x08: Recursive Functions
+
+x0B: Malloc and Free
