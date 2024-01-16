@@ -16,7 +16,7 @@ char *str_concat(char *s1, char *s2)
 	char *m;
 	int i, j;
 
-	m = malloc(len_str(s1) + len_str(s2));
+	m = malloc(len_str(s1) + len_str(s2) + 1); /* +1 for null byte*/
 	if (m == NULL)
 		return (NULL);
 	i = 0;
