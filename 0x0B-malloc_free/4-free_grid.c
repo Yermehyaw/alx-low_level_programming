@@ -3,7 +3,7 @@
 
 /**
  * free_grid - Frees allocated memory of a 2D array
- * @grud: 2D array
+ * @grid: 2D array
  * @height: Columns of values in the array
  *
  * Return: Pointer to freed array of pointers (Success)
@@ -23,4 +23,5 @@ void free_grid(int **grid, int height)
 		free(m[i]);
 		++i;
 	}
+	free(m);
 }
