@@ -10,3 +10,4 @@ The function will:
 1: Create a copy of a string given as a parameter
 2: Concatenate two parameter strings
 3: Create almost any user desired 2D array of integers
+4: Free/Deallocate memory of a user specified 2D array
