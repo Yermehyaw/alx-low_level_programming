@@ -3,14 +3,14 @@
 
 /**
  * struct dog - Information on a dog
- * @nane: Name of the dog
+ * @name: Name of the dog
  * @age: Dogs age
  * @owner: Dogs owner
  */
 
 struct dog
 {
-	char *nane;
+	char *name;
 	float age;
 	char *owner;
 };
