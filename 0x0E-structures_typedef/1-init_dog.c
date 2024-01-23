@@ -4,8 +4,8 @@
 /**
  * init_dog - Initializes a struct variable
  * @d: Memory address of the struct variable
- * @nane: Name
- * @afe: Age
+ * @name: Name
+ * @age: Age
  * @owner: Owners Name
  */
 
