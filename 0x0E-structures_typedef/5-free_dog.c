@@ -1,5 +1,5 @@
 #include "dog.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * free_doog - Frees dynalic mem of a strucy var
