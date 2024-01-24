@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * free_doog - Frees dynalic mem of a strucy var
+ * free_dog - Frees dynalic mem of a strucy var
  * @d: Struct variable
  */
 
