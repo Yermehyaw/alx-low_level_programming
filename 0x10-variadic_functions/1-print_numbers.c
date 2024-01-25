@@ -6,7 +6,7 @@ int incr_i(int a, int i, int n);
 
 /**
  * print_numbers - Prints all its param values
- * @seperator: Seperating punctuation
+ * @separator: Seperating punctuation
  * @n: No of param
  */
 
@@ -15,7 +15,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i;
 	va_list ap;
 
-	va_start (ap, n);
+	va_start(ap, n);
 	i = 0;
 	while (i < n)
 	{
@@ -24,7 +24,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 			printf("%s", separator);
 		++i;
 	}
-	va_end (ap);
+	va_end(ap);
 	printf("\n");
 }
 
