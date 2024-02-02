@@ -10,3 +10,5 @@ a pointer to the next node.
 The following functions use linked lists to:
 0: Print all elements of a list
 1: Returns the number of elements in a linked list
+
+4: Frees all allocated  memory in a linked list
