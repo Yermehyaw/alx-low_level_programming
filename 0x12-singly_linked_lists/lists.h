@@ -27,6 +27,7 @@ typedef long unsigned int size_t;
 
 
 /* Function Prototypes */
+int _putchar(int);
 size_t print_list(const list_t *h);
 
 #endif
