@@ -7,7 +7,7 @@
  * pop_listint - Deletes the head node of a linked list
  * @head: A pointer to a pointer to the head node
  *
- * Return: The ibt data stored at the head node - if available (Success)
+ * Return: The int data stored at the head node - if available (Success)
  */
 
 int pop_listint(listint_t **head)
