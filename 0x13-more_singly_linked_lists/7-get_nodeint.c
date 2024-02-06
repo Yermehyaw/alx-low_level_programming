@@ -6,7 +6,7 @@
 /**
  * get_nodeint_at_index - Returns the address of a node at given index
  * @head: Pointer to head node
- * aindex: Index no
+ * @index: Index no
  *
  * Return: Any valid memory address (Success)
  */
