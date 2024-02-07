@@ -22,14 +22,13 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	new->next = NULL;
 	new->n = n;
 	temp = *head; /* Hold the intitial position of head*/
-	if (*head == NULL)
-		*head = new;
+	if (temp == NULL)
+		temp = new;
 	else
 	{
-		while (*head != NULL)
-			*head = (*head)->next;
-		*head = new;
-		*head = temp; /*Brings head to its initial position */
+		while (temp != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
 	return (new);
 }
