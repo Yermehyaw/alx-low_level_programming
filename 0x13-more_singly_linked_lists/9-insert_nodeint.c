@@ -25,14 +25,23 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	new->n = n;
 	new->next = NULL;
 	temp = *head;
-	while (count != 0)/* Move to the index */
+	if (*head == NULL)
+		*head = new;
+	if (count == 0)
+		(*head)->next = new;
+	--count;
+	while (count != 0)/* Move to the node before index */
 	{
 		if (temp  == NULL)
 			return (NULL);
 		temp = temp->next;
 		--count;
 	}
-	temp1 = temp->next; /* Point temp1 to next node after the index node */
+	if (temp->next == NULL)
+	{
+		; /* temp1 will just be init to NULL in the  next line*/
+	}
+	temp1 = temp->next; /* Point to  node after temp */
 	temp->next = new; /* Connect the index npde to new node */
 	new->next = temp1; /* Connect the new node to previous link */
 	return (new);
