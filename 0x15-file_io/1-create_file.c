@@ -25,6 +25,8 @@ int create_file(const char *filename, char *text_content)
 	sz_wr = write(fd, text_content, len_str(text_content));
 	if (sz_wr < 0)
 		return (-1);
+	if (close(fd) < 0)
+		return (-1);
 	return (1);
 }
 
@@ -43,5 +45,5 @@ int len_str(char *str)
 	len = 0;
 	while (str[len] != '\0')
 		++len;
-	return (++len);
+	return (len);
 }
