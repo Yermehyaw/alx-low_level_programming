@@ -21,7 +21,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (buf == NULL)
 		exit(0);
 	/* Open the file */
-	fd = open(filename, O_RDONLY);
+	fd = open(filename, O_CREAT |  O_RDONLY);
 	if (fd < 0)
 		exit(0);
 	/* Read the file to buf */
