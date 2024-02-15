@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-int check_fd(int, char *);
-int check_sz(int, char *);
+int check_read(int, char *);
+int check_write(int, char *);
 
 /**
  * main - Copies the content of a file to another file
@@ -16,8 +16,7 @@ int check_sz(int, char *);
 
 int main(int argc, char *argv[])
 {
-	int fd1, fd2, check;
-	size_t sz_rd, sz_wr;
+	int fd1, fd2, check, sz_rd, sz_wr;
 	char *buf;
 
 	if (argc != 3)
@@ -28,20 +27,24 @@ int main(int argc, char *argv[])
 	buf = malloc(1024);
 	if (buf == NULL)
 		exit(-1);
-	fd1 = open(argv[1], O_CREAT | O_EXCL | O_RDONLY, 664);
-	check = check_fd(fd1, argv[1]);
+	/* argv[1] - file_from */
+	/* argv[2] - file_to */
+	fd1 = open(argv[1], O_RDONLY);
+	check = check_read(fd1, argv[1]);
 	if (check == -1)
 		exit(98);
-	fd2 = open(argv[2], O_CREAT | O_TRUNC | O_RDONLY);
-	check = check_fd(fd2, argv[2]);
+	fd2 = open(argv[2], O_CREAT | O_WRONLY, 0644);
+	check = check_write(fd2, argv[2]);
 	if (check == -1)
 		exit(99);
+	/* while loop here */
 	sz_rd = read(fd1, buf, 1024);
-	check = check_sz(sz_rd, argv[1]);
+	check = check_read(sz_rd, argv[1]);
 	if (check == -1)
 		exit(98);
+	/* another here also */
 	sz_wr = write(fd2, buf, 1024);
-	check = check_sz(sz_wr, argv[2]);
+	check = check_write(sz_wr, argv[2]);
 	if (check == -1)
 		exit(99);
 	if (close(fd1) < 0)
@@ -60,14 +63,14 @@ int main(int argc, char *argv[])
 
 
 /**
- * check_fd - Checks if open() is successful
+ * check_read - Checks if open() is successful
  * @fd: file decriptor no
  * @nm: Name of file
  *
- * Return: 1 if succesful
+ * Return: 0 if succesful
  */
 
-int check_fd(int fd, char *nm)
+int check_read(int fd, char *nm)
 {
 	if (fd < 0)
 	{
@@ -75,26 +78,25 @@ int check_fd(int fd, char *nm)
 			nm);
 		return (-1);
 	}
-	return (1);
+	return (0);
 
 }
 
 
 /**
- * check_sz - Checks if write() and read() are successful
+ * check_write - Checks if write() and read() are successful
  * @sz: write() and read() return values
  * @nm: Name of file
- * Return: 1 if succesful
+ * Return: 0 if succesful
  */
 
-int check_sz(int sz, char *nm)
+int check_write(int sz, char *nm)
 {
 	if (sz < 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n",
 			nm);
 		return (-1);
 	}
-	return (1);
-
+	return (0);
 }
