@@ -18,35 +18,42 @@ int main(int argc, char *argv[])
 {
 	int fd1, fd2, check, sz_rd, sz_wr;
 	char *buf;
+	int i;
 
+	i = 5;
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buf = malloc(1024);
+	buf = malloc(i * 1024);
 	if (buf == NULL)
 		exit(-1);
-	/* argv[1] - file_from */
-	/* argv[2] - file_to */
-	fd1 = open(argv[1], O_RDONLY);
+	fd1 = open(argv[1], O_RDONLY); /* argv[1] - file_from */
 	check = check_read(fd1, argv[1]);
 	if (check == -1)
 		exit(98);
-	fd2 = open(argv[2], O_CREAT | O_WRONLY, 0644);
+	fd2 = open(argv[2], O_CREAT | O_WRONLY, 0644); /* argv[2] - file_to */
 	check = check_write(fd2, argv[2]);
 	if (check == -1)
 		exit(99);
-	/* while loop here */
-	sz_rd = read(fd1, buf, 1024);
-	check = check_read(sz_rd, argv[1]);
-	if (check == -1)
-		exit(98);
+	while (i != 0)
+	{
+		sz_rd = read(fd1, buf, 1024);
+		check = check_read(sz_rd, argv[1]);
+		if (check == -1)
+			exit(98);
+		--i;
+	}
 	/* another here also */
-	sz_wr = write(fd2, buf, 1024);
-	check = check_write(sz_wr, argv[2]);
-	if (check == -1)
-		exit(99);
+	while (i != 0)
+	{
+		sz_wr = write(fd2, buf, 1024);
+		check = check_write(sz_wr, argv[2]);
+		if (check == -1)
+			exit(99);
+		--i;
+	}
 	if (close(fd1) < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
