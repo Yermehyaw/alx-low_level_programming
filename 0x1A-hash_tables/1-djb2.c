@@ -4,7 +4,7 @@
  * hash_djb2 - Hashes a key @str
  * @str: Hask key/string. Used to generate the hash value
  *
- * Rerurn: An int representibg the hash
+ * Return: An int representibg the hash
  */
 
 unsigned long int hash_djb2(const unsigned char *str)
