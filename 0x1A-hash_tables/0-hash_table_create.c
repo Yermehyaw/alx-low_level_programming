@@ -4,7 +4,7 @@
  * hash_table_create - Creates a hash table of struct @hash_table_t
  * @size: size of the array
  *
- * Return: Memory location of tge new hash table
+ * Return: Memory location of the new hash table
  */
 
 hash_table_t *hash_table_create(unsigned long int size)
@@ -16,14 +16,10 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (new_hash == NULL)
 		return (NULL);
 	new_hash->size = size; /* size is the size of array param entered */
-	new_hash->array = malloc(size * sizeof(hash_node_t));
+	new_hash->array = malloc(size * sizeof(hash_node_t));/*pointer array*/
 	if (new_hash->array == NULL)
 		return (NULL);
-	i = 0;
-	while (i < (int)size)
-	{
+	for (i = 0, i < (int)size; ++i)/*set all ind pointers in array to NULL*/
 		new_hash->array[i] = NULL;
-		++i;
-	}
 	return (new_hash); /* the new hash table with malloc'ed cells*/
 }
