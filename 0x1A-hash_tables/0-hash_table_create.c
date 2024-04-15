@@ -16,10 +16,10 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (new_hash == NULL)
 		return (NULL);
 	new_hash->size = size; /* size is the size of array param entered */
-	new_hash->array = malloc(size * sizeof(hash_node_t));/*pointer array*/
+	new_hash->array = calloc(size, sizeof(hash_node_t));/*pointer array*/
 	if (new_hash->array == NULL)
 		return (NULL);
-	for (i = 0, i < (int)size; ++i)/*set all ind pointers in array to NULL*/
+	for (i = 0; i < (int)size; ++i)/*set all ind pointers in array to NULL*/
 		new_hash->array[i] = NULL;
 	return (new_hash); /* the new hash table with malloc'ed cells*/
 }
