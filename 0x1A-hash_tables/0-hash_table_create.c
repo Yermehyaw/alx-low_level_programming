@@ -19,7 +19,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	new_hash->size = size; /* size is the size of array param entered */
 	new_hash->array = &hash_array[0];
 	i = 0;
-	while (i < size)
+	while (i < (int)size)
 	{
 		hash_array[i] = malloc(sizeof(hash_node_t)); /**
 							      *each cell is a
