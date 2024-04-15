@@ -9,15 +9,15 @@
 
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	hash_node_t *new_hash;
-	hash_node_t hash_array[size];
+	hash_table_t *new_hash;
+	hash_node_t *hash_array[size];
 	int i;
 
 	new_hash = malloc(sizeof(hash_table_t));
 	if (new_hash == NULL)
 		return (NULL);
 	new_hash->size = size; /* size is the size of array param entered */
-	new_hash->array = &hash_array;
+	new_hash->array = &hash_array[0];
 	i = 0;
 	while (i < size)
 	{
@@ -25,7 +25,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 							      *each cell is a
 							      * struct
 							      */
-		if (hash_array == NULL)
+		if (hash_array[i] == NULL)
 			return (NULL);
 		hash_array[i]->key = NULL;
 		hash_array[i]->value = NULL;
