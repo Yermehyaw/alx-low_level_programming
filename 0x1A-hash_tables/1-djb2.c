@@ -1,4 +1,4 @@
-#include "header_tables.h"
+#include "hash_tables.h"
 
 /**
  * hash_djb2 - Hashes a key @str
