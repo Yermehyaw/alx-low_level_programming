@@ -16,20 +16,20 @@
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index;
+	unsigned long int idx;
 	hash_node_t **arr;
 	hash_node_t *cell_node, *temp;
 
 	if (ht == NULL)
 		return (0);
 	arr = ht->array; /* get the array for ease of syntax */
-	if (strcmp(key, "") || strcmp(key, NULL)) /* key cannot be empty */
+	if (strcmp(key, "") == 0 || (key ==  NULL)) /* key cannot be empty */
 		return (0);
-	index = key_index(key, ht->size); /* Generate index */
+	idx = key_index((const unsigned char *)key, ht->size);/*Generate index*/
 	cell_node = malloc(sizeof(hash_node_t));
 	if (cell_node == NULL)
 		return (0);
-	temp = arr[index];/*temp now holds the array cell mem address*/
+	temp = arr[idx];/*temp now holds the array cell mem address*/
 	if (temp != NULL) /**
 			   * a node already exists in this index.
 			   * != NULL preferred incase @ht didnt have its
@@ -43,7 +43,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 					      * initially pointing to i.e either
 					      * NULL or a mem address
 					      */
-	arr[index] = cell_node; /*mem addr at that index is now cell_node's*/
+	arr[idx] = cell_node; /*mem addr at that index is now cell_node's*/
 	strcpy(cell_node->value, value);/* initialize irs value & key*/
 	strcpy(cell_node->key, key);
 	return (1);
