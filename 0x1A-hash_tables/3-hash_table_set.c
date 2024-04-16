@@ -32,14 +32,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	temp = arr[idx];/*temp now holds the array cell mem address*/
 	if (temp != NULL) /*a node already exists in this index.*/
 		/* Add new cell node to beginning of linked list*/
-		cell_node->next = temp->next;/**
-					      * points cell_node's *next to
-					      * whatever arr[index] was
-					      * initially pointing to i.e either
-					      * NULL or a mem address
-					      */
+		cell_node->next = temp;/**
+					* points cell_node's *next to whatever
+					* arr[index] was initially pointing to
+					* i.e either NULL or a mem address
+					*/
 	arr[idx] = cell_node; /*mem addr at that index is now cell_node's*/
-	strcpy(cell_node->value, value);/* initialize irs value & key*/
-	strcpy(cell_node->key, key);
+	/* alloc menm & init its value and key */
+	cell_node->value = strdup(value);
+	cell_node->key = strdup(key);
+	if (cell_node->value == NULL || cell_node->key == NULL)
+		return (0);
+/*	strcpy(cell_node->value, value);*/
+/*	strcpy(cell_node->key, key);*/
 	return (1);
 }
