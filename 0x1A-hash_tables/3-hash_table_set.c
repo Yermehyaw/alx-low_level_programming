@@ -6,8 +6,8 @@
  * @key: index identifier
  * @value: value to be stored
  *
- * Description: @key is a string which will be used to generate a valid index in
- * the hash table @ht. This index is generated first by hashing with the
+ * Description: @key is a string which will be used to generate a valid index
+ * in the hash table @ht. This index is generated first by hashing with the
  * djb2 algorithm @hash_djb2(), then by a mapping/indexing function
  * @hash_index() to produce the required index.
  *
@@ -30,12 +30,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (cell_node == NULL)
 		return (0);
 	temp = arr[idx];/*temp now holds the array cell mem address*/
-	if (temp != NULL) /**
-			   * a node already exists in this index.
-			   * != NULL preferred incase @ht didnt have its
-			   * elements initialized to NULL. (Im not quite
-			   * "expecting" you to understand... :))
-			   */
+	if (temp != NULL) /*a node already exists in this index.*/
 		/* Add new cell node to beginning of linked list*/
 		cell_node->next = temp->next;/**
 					      * points cell_node's *next to
