@@ -17,10 +17,7 @@ void hash_table_print(const hash_table_t *ht)
 	char *key, *value;
 
 	if (ht == NULL)
-	{
-		printf("{}\n");
 		return;
-	}
 	arr = ht->array;
 	size = ht->size;
 	placeholder = malloc(sizeof(hash_node_t)); /*placeholding mem address*/
