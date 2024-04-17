@@ -1,5 +1,8 @@
 #include "hash_tables.h"
 
+
+void temp2_comma(hash_node_t *temp2, hash_node_t *placeholder)
+
 /**
  * hash_table_print - Prints the value and keys of a hash table in the order
  * they are stored
@@ -31,14 +34,7 @@ void hash_table_print(const hash_table_t *ht)
 			continue;
 		while (temp1)/* i.e while temp is not equal to NULL*/
 		{
-			if (temp2 == NULL) /**
-					    * temp2 will be NULL if the second
-					    * while loop in acessing nodes execs
-					    */
-			{
-				printf(", ");
-				temp2 = placeholder; /*Placeholder*/
-			}
+			temp2_comma(temp2, placeholder); /*Print comma*/
 			key = temp1->key;
 			value = temp1->value;
 			printf("'%s': '%s'", key, value);
@@ -57,4 +53,21 @@ void hash_table_print(const hash_table_t *ht)
 	}
 	printf("}\n");
 	free(placeholder);
+}
+
+/**
+ * temp2_comma - Prints a comma to separate successive node outputs
+ * @temp2: mem address of temp2
+ * @placeholder: a placeholder used to reinitialize temp2
+ *
+ */
+
+void temp2_comma(hash_node_t *temp2, hash_node_t *placeholder)
+if (temp2 == NULL) /**
+		    * temp2 will be NULL if the second
+		    * while loop in acessing nodes execs
+		    */
+{
+	printf(", ");
+	temp2 = placeholder; /*Placeholder*/
 }
