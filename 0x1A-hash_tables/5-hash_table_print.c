@@ -12,9 +12,8 @@
 
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int size;
+	unsigned long int size, i;
 	hash_node_t **arr, *temp1, *temp2, *placeholder;
-	int i;
 	char *key, *value;
 
 	if (ht == NULL)
@@ -24,7 +23,8 @@ void hash_table_print(const hash_table_t *ht)
 	}
 	arr = ht->array;
 	size = ht->size;
-	temp2 = placeholder; /* Placeholder for an if statement */
+	placeholder = malloc(sizeof(hash_node_t)); /*placeholding mem address*/
+	temp2 = placeholder; /*temp2 shld not be NULL in first iteration*/
 	printf("{"); /* Begin dict style printing */
 	/* Accessing the cells/nodes in the hash table*/
 	for (i = 0; i < size; ++i)
@@ -59,4 +59,5 @@ void hash_table_print(const hash_table_t *ht)
 		}
 	}
 	printf("}\n");
+	free(placeholder);
 }
