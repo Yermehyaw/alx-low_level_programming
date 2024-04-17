@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 
-void temp2_comma(hash_node_t *temp2, hash_node_t *placeholder)
+void temp2_comma(hash_node_t *temp2, hash_node_t *placeholder);
 
 /**
  * hash_table_print - Prints the value and keys of a hash table in the order
@@ -63,11 +63,13 @@ void hash_table_print(const hash_table_t *ht)
  */
 
 void temp2_comma(hash_node_t *temp2, hash_node_t *placeholder)
-if (temp2 == NULL) /**
-		    * temp2 will be NULL if the second
-		    * while loop in acessing nodes execs
-		    */
 {
-	printf(", ");
-	temp2 = placeholder; /*Placeholder*/
+	if (temp2 == NULL) /**
+			    * temp2 will be NULL if the second
+			    * while loop in acessing nodes execs
+			    */
+	{
+		printf(", ");
+		temp2 = placeholder; /*Placeholder*/
+	}
 }
