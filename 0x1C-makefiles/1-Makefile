@@ -1,0 +1,12 @@
+# Builds a makrfile with bvariables
+.PHONY: school
+
+all: school
+
+CC:= gcc
+
+SRC:= main.c school.c
+
+
+school: ${SRC}
+	${CC} ${SRC} -o school
