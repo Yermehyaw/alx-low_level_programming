@@ -1,0 +1,10 @@
+# Build a first useful makefile
+all: school
+
+CC := gcc
+
+SRC :=
+
+
+school:
+	
