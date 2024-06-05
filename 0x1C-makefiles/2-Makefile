@@ -2,11 +2,7 @@
 all: main.o school.o school
 
 NAME := school
-
 CC := gcc
-
-CFLAGS := -c
-
 SRC := $(wildcard *.c)
 
 main.o: main.c
