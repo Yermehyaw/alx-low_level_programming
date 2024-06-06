@@ -1,0 +1,31 @@
+# Automate C comilation with additional flags inluding cleanup rules
+.PHONY: clean oclean fclean re
+
+all: main.o school.o school
+
+CC := gcc
+CFLAGS := -Wall -Werror -Wextra -pedantic
+SRC := $(wildcard *.c)
+NAME := school
+RM := $(wildcard *~, $(NAME))
+
+main.o: main.c
+school.o: school.c
+# %.o: %.c
+# 	$(CC) -c $< $@
+
+OBJ := 
+
+school: main.o school.o
+	$(CC) $(OBJ) -o $(NAME)
+
+clean:
+	rm -f $(RM)
+
+oclean:
+	rm -f $(OBJ)
+
+fclean: clean oclean
+
+re: oclean school
+
