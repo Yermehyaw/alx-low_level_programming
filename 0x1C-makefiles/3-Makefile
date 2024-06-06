@@ -1,0 +1,27 @@
+# Automate C files compilation with clean up rules
+.PHONY: clean oclean fclean re
+
+all: main.o school.o school
+
+CC := gcc
+SRC := $(wildcard *.c)
+NAME: := school
+RM := $(wildcard *~, $(NAME))
+
+main.o: main.c
+school.o: school.c
+
+OBJ := 
+
+school: main.o school.o # $(OBJ)
+	$(CC) $^ -o $(NAME)
+
+clean:
+	rm -f $(RM)
+
+oclean:
+	rm -f $(OBJ)
+
+fclean: clean oclean
+
+re: oclean school
