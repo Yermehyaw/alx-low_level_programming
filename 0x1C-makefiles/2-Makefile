@@ -1,10 +1,14 @@
-# Build a first useful makefile
-all: school
+# Build my first useful makefile
+all: main.o school.o school
 
+NAME := school
 CC := gcc
+SRC := $(wildcard *.c)
 
-SRC :=
+main.o: main.c
+school.o: school.c
 
+OBJ := $(wildcard *.o)
 
-school:
-	
+$(NAME): $(OBJ)
+	$(CC) $^ -o $@
