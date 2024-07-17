@@ -40,7 +40,7 @@ int binary_search(int *array, size_t size, int value)
  * the middle value is found in the array. Thus @mid_idx = @mid - 1.
  * @mid isnt used directly due to dicripencies that occur as the array grows
  * smaller during successive recursive calls.
- * In summary: 
+ * In summary:
  * array[mid] is the value right of the middle value
  * array[mid - 1] is the value middle value itself and;
  * array[mis - 2] is the value left of the middle value
@@ -65,7 +65,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 		return (mid); /*index right of the middle value*/
 	/*Fix later..... seems to be redundant*/
 	/**
-	 *  value is not in the array if both mid_idx+1 and mid_idx-1 are greater 
+	 *  value is not in the array if both mid_idx+1 and mid_idx-1 are greate
 	 *  than value or less than value
 	 */
 	/*else if ((sorted_arr[mid_idx - 1] < value) && */
@@ -81,11 +81,11 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 		if (sorted_arr[mid] < value)/*yes? take right hand side of arr*/
 		{
 			/**
-		 	* the array is sorted in ascending order, so the if the
-			* value right of the mid_idx is less than the value of
-			* interest, it shows that the value of interest is large
-			* and thus at the right hand side of the array
-			*/
+			 * the array is sorted in ascending order, so the if the
+			 * value right of the mid_idx is less than the value of
+			 * interest, it shows that the value of interest is
+			 * large and thus at the right hand side of the array
+			 */
 			print_array(sorted_arr, size);
 			new_arr = right_arr(sorted_arr, size, mid);
 			size = size - mid; /*new size param*/
@@ -106,7 +106,11 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 /**
  * print_array - prints an array of ints
  * @array: array
-
+ * @size: size of array to print
+ *
+ * Description:
+ * - rem means remaining
+ */
 void print_array(int *array, size_t size)
 {
 	size_t i;
@@ -115,7 +119,7 @@ void print_array(int *array, size_t size)
 	if (size >= 1) /*If the array has at least one element*/
 	{
 		printf("Searching in array: %d", array[0]);
-		for (i = 1; i <= size; ++i) /*print remining elem on the same line*/
+		for (i = 1; i <= size; ++i) /*print rem  elem on the same line*/
 		{
 			printf(" ,%d", array[i]);
 			if (i == size) /*print a newline at the last iteration*/
@@ -149,7 +153,8 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
 		new_arr[i] = sorted_arr[mid_right];
 	return (new_arr); /**
 			   * non-dynamically allocated  arrays can only be
-			   * returned if declared as static */
+			   * returned if declared as static
+			   */
 }
 
 
@@ -168,12 +173,10 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left)
 	size_t i;
 
 	/**
-	 * mid_left is of an index range, thus <= is used to ensure the 
-	 * very last value in the array is copied 
+	 * mid_left is of an index range, thus <= is used to ensure the
+	 * very last value in the array is copied
 	 */
 	for (i = 0; i <= mid_left; ++i)
 		new_arr[i] = sorted_arr[i];
 	return (new_arr);
 }
-#include <stdio.h>
-#include "search_algos.h"
