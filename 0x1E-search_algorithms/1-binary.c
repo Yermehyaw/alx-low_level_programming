@@ -45,6 +45,8 @@ int binary_search(int *array, size_t size, int value)
  * array[mid - 1] is the value middle value itself and;
  * array[mis - 2] is the value left of the middle value
  *
+ * - recur means recursion
+ *
  * Return: The index where the value is located, otherwise, -1
  */
 
@@ -55,13 +57,13 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 
 	mid = size / 2; /*DONT REDUCE TO INDEX VALUE, see @Description */
 	/* Base-cases, forgive the many if, else ifs.... ;) */
-	if (sorted_arr[mid - 1] == value)
+	if (sorted_arr[mid - 2] == value)
+		return (mid - 2); /*index left of the middle value*/
+	else if (sorted_arr[mid - 1] == value)
 		return (mid - 1); /*return the very index where the value is */
 	else if (sorted_arr[mid] == value)
 		return (mid); /*index right of the middle value*/
-	else if (sorted_arr[mid_idx - 2] == value)
-		return (mid_idx - 2); /*index left of the middle value*/
-	/*Fix later.....*/
+	/*Fix later..... seems to be redundant*/
 	/**
 	 *  value is not in the array if both mid_idx+1 and mid_idx-1 are greater 
 	 *  than value or less than value
@@ -73,25 +75,29 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			/*(sorted_arr[mid_idx + 1] > value))*/
 		/*return (-1);*/ /* both are greater than */
 	/* Recursive calls */
-	if (sorted_arr[mid] < value) /*if yes, take right hand side of arr*/
+	if (mid >= 1)
 	{
-		/**
-		 * the array is sorted in ascending order, so the if the value
-		 * right of the mid_idx is less than the value of interest, it shows
-		 * that the value of interest is large and thus at the right
-		 * hand side of the array
-		 */
-		print_array(sorted_arr, size);
-		new_arr = right_arr(sorted_arr, size, mid); /*Possible err here*/
-		size = size - (mid + 1); /*new size param*/
-		divide_and_conquer(new_arr, size, value);
-	}
-	else if (sorted_arr[mid - 2] > value)/*if yes, take the left arr*/
-	{
-		print_array(sorted_arr, size);
-		new_arr = left_arr(sorted_arr, size, mid - 2); /*and here, check function declarations, to see if mid should really be in index reange or not or the */
-		size = size - mid;
-		divide_and_conquer(new_arr, size, value);
+		/*Split array call function recursively on tge appr subarray*/
+		if (sorted_arr[mid] < value)/*yes? take right hand side of arr*/
+		{
+			/**
+		 	* the array is sorted in ascending order, so the if the
+			* value right of the mid_idx is less than the value of
+			* interest, it shows that the value of interest is large
+			* and thus at the right hand side of the array
+			*/
+			print_array(sorted_arr, size);
+			new_arr = right_arr(sorted_arr, size, mid);
+			size = size - mid; /*new size param*/
+			divide_and_conquer(new_arr, size, value);/*recur right*/
+		}
+		else if (sorted_arr[mid - 2] > value)/*yes?, take the left arr*/
+		{
+			print_array(sorted_arr, size);
+			new_arr = left_arr(sorted_arr, size, mid - 2);
+			size = size - (mid + 2);
+			divide_and_conquer(new_arr, size, value);/*recur left*/
+		}
 	}
 	return (-1);  /* control flow may never reach here ;) */
 }
@@ -100,8 +106,6 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 /**
  * print_array - prints an array of ints
  * @array: array
- * @size: size of the array
- */
 
 void print_array(int *array, size_t size)
 {
@@ -114,7 +118,7 @@ void print_array(int *array, size_t size)
 		for (i = 1; i <= size; ++i) /*print remining elem on the same line*/
 		{
 			printf(" ,%d", array[i]);
-			if ((i == size) /*print a newline at the last iteration*/
+			if (i == size) /*print a newline at the last iteration*/
 				printf("\n");
 		}
 	}
@@ -171,3 +175,5 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left)
 		new_arr[i] = sorted_arr[i];
 	return (new_arr);
 }
+#include <stdio.h>
+#include "search_algos.h"
