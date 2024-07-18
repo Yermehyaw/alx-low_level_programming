@@ -63,17 +63,6 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 		return (mid - 1); /*return the very index where the value is */
 	else if (sorted_arr[mid] == value)
 		return (mid); /*index right of the middle value*/
-	/*Fix later..... seems to be redundant*/
-	/**
-	 *  value is not in the array if both mid_idx+1 and mid_idx-1 are greate
-	 *  than value or less than value
-	 */
-	/*else if ((sorted_arr[mid_idx - 1] < value) && */
-			/*(sorted_arr[mid_idx + 1] < value))*/
-		/*return (-1);*/ /* both value at the indices are less than */
-	/*else if ((sorted_arr[mid_idx - 1] > value) && */
-			/*(sorted_arr[mid_idx + 1] > value))*/
-		/*return (-1);*/ /* both are greater than */
 	/* Recursive calls */
 	if (mid >= 1)
 	{
@@ -119,10 +108,10 @@ void print_array(int *array, size_t size)
 	if (size >= 1) /*If the array has at least one element*/
 	{
 		printf("Searching in array: %d", array[0]);
-		for (i = 1; i <= size; ++i) /*print rem  elem on the same line*/
+		for (i = 1; i < size; ++i) /*print rem  elem on the same line*/
 		{
 			printf(" ,%d", array[i]);
-			if (i == size) /*print a newline at the last iteration*/
+			if (i == (size - 1)) /*print a newline at the last iteration*/
 				printf("\n");
 		}
 	}
@@ -149,7 +138,7 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
 	 * mid_right is of an index range and should iterate till
 	 * the very end of the array
 	 */
-	for (i = 0; mid_right < size; ++i, ++mid_right)
+	for (i = 0; mid_right < (int)size; ++i, ++mid_right)
 		new_arr[i] = sorted_arr[mid_right];
 	return (new_arr); /**
 			   * non-dynamically allocated  arrays can only be
@@ -176,7 +165,7 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left)
 	 * mid_left is of an index range, thus <= is used to ensure the
 	 * very last value in the array is copied
 	 */
-	for (i = 0; i <= mid_left; ++i)
+	for (i = 0; (int)i <= mid_left && i < size; ++i)
 		new_arr[i] = sorted_arr[i];
 	return (new_arr);
 }
