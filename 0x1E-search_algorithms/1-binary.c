@@ -104,14 +104,14 @@ void print_array(int *array, size_t size)
 	if (size >= 1) /*If the array has at least one element*/
 	{
 		printf("Searching in array: %d", array[0]);
-		for (i = 1; i < size; ++i) /*print rem  elem on the same line*/
+		for (i = 1; i <= size; ++i) /*print rem  elem on the same line*/
 		{
-			printf(" ,%d", array[i]);
-			if (i == (size - 1)) /*print a newline at the last iteration*/
+			printf(", %d", array[i]);
+			if (i == size) /*print a newline at the last iteration*/
 				printf("\n");
 		}
 	}
-	else /*not sure if OOBstill needed*/
+	else /*not sure if still needed*/
 		printf("Searching in array:");
 }
 
@@ -119,7 +119,7 @@ void print_array(int *array, size_t size)
 /**
  * right_arr - copies an array from @mid_right till end of the array
  * @sorted_arr: the array
- * AOA@size: size of @sorted_arr
+ * @size: size of @sorted_arr
  * @mid_right: the first index of the sub array to be returned
  *
  * Return: a partitioned array
@@ -132,7 +132,7 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
 
 	/**
 	 * mid_right is of an index range and should iterate till
-OOA	 * the very end of the array
+	 * the very end of the array
 	 */
 	for (i = 0; mid_right <= (int)size; ++i, ++mid_right)
 		new_arr[i] = sorted_arr[mid_right];
@@ -146,7 +146,7 @@ OOA	 * the very end of the array
 /**
  * left_arr - copies an array from @mid_left till end of the array
  * @sorted_arr: the array
- * @AOAsize: size of @sorted_arr
+ * @size: size of @sorted_arr
  * @mid_left: the last index of the sub array to be returned
  *
  * Return: a partitioned  array
