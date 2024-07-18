@@ -104,8 +104,10 @@ void print_array(int *array, size_t size)
 	if (size >= 1) /*If the array has at least one element*/
 	{
 		printf("Searching in array: %d", array[0]);
+		printf("\nOutside the loop\n");
 		for (i = 1; i < size; ++i) /*print rem  elem on the same line*/
 		{
+			printf("Inside the loop\n");
 			printf(", %d", array[i]);
 			if (i == (size - 1)) /*print a newline at the last iteration*/
 				printf("\n");
