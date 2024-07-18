@@ -76,7 +76,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			new_arr = right_arr(sorted_arr, size, mid);
 			while (1)
                         {
-                                printf("divide anconquer called\n");
+                                printf("divide and conquer called in right_arr\n");
                                 break;
                         }
 
@@ -89,7 +89,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			new_arr = left_arr(sorted_arr, size, mid - 1);
 			while (1)
 			{
-				printf("divide anconquer called\n");
+				printf("divide anconquer called in left\n");
 				break;
 			}
 			divide_and_conquer(new_arr, size, value);/*recur left*/
