@@ -21,8 +21,6 @@ int binary_search(int *array, size_t size, int value)
 
 	if (array == NULL || size == 0)
 		return (-1);
-	if (size == 1)  /* Array of size 1*/
-		return (0);
 	found = divide_and_conquer(array, size, value);
 	return (found);  /*if -1, value was not found in the array*/
 }
@@ -71,7 +69,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			 * interest, it shows that the value of interest is
 			 * large and thus at the right hand side of the array
 			 */
-			printf("Entered here next\n");
+			printf("\nEntered left\n");
 			print_array(sorted_arr, size);
 			size = size - mid; /*new size param*/
 			new_arr = right_arr(sorted_arr, size, mid);
@@ -85,7 +83,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 		}
 		else if (value < sorted_arr[mid - 1])/*yes?, take the left arr*/
 		{
-			printf("Entered left_arr() first\n");
+			printf("\nEntered right\n");
 			print_array(sorted_arr, size);
 			size = mid;
 			new_arr = left_arr(sorted_arr, size, mid - 1);
@@ -117,10 +115,8 @@ void print_array(int *array, size_t size)
 	if (size >= 1) /*If the array has at least one element*/
 	{
 		printf("Searching in array: %d", array[0]);
-		printf("\nOutside the loop\n");
 		for (i = 1; i < size; ++i) /*print rem  elem on the same line*/
 		{
-			printf("Inside the loop\n");
 			printf(", %d", array[i]);
 			if (i == (size - 1)) /*print a newline at the last iteration*/
 				printf("\n");
