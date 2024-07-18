@@ -71,6 +71,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			 * interest, it shows that the value of interest is
 			 * large and thus at the right hand side of the array
 			 */
+			printf("Entered here next\n");
 			print_array(sorted_arr, size);
 			size = size - mid; /*new size param*/
 			new_arr = right_arr(sorted_arr, size, mid);
@@ -84,6 +85,7 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 		}
 		else if (value < sorted_arr[mid - 1])/*yes?, take the left arr*/
 		{
+			printf("Entered left_arr() first\n");
 			print_array(sorted_arr, size);
 			size = mid;
 			new_arr = left_arr(sorted_arr, size, mid - 1);
