@@ -7,7 +7,7 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right);
 int *left_arr(int *sorted_arr, size_t size, int mid_left);
 
 /**
- * binary_search - Implements tge binary search algo. on an array
+ * binary_search - Implements the binary search algo. on an array
  * @array: the array to search
  * @size: size of the array
  * @value: value to find in the array
@@ -55,16 +55,12 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 	int *new_arr;
 	int mid;
 
-	mid = (size / 2) + 0.5; /**
-				 * DONT REDUCE TO INDEX VALUE,
-				 * see @Description
-				 * +0.5 is used to round up values
-				 */
+	mid = size / 2;/*DONT REDUCE TO INDEX VALUE,* see @Description*/
 	/* Base-case  */
 	if (sorted_arr[mid - 1] == value)
 		return (mid - 1); /*return the very index where the value is */
 	/* Recursive calls */
-	if (size >= 2) /*Only an array with at least 2 elems can be divided */
+	if (size) /*Only an array with at least 2 elems can be divided */
 	{
 		/*Split array call function recursively on the appr subarray*/
 		if (value > sorted_arr[mid - 1])/*yes? take right subarray*/
@@ -76,21 +72,15 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			 * large and thus at the right hand side of the array
 			 */
 			print_array(sorted_arr, size);
-			new_arr = right_arr(sorted_arr, size, mid);
 			size = size - mid; /*new size param*/
+			new_arr = right_arr(sorted_arr, size, mid);
 			divide_and_conquer(new_arr, size, value);/*recur right*/
 		}
 		else if (value < sorted_arr[mid - 1])/*yes?, take the left arr*/
 		{
 			print_array(sorted_arr, size);
-			if (mid < 2)
-				;
-			else
-			{
-				mid = mid - 2;
-			}
-			new_arr = left_arr(sorted_arr, size, mid);
-			size = mid + 1;
+			size = mid;
+			new_arr = left_arr(sorted_arr, size, mid - 1);
 			divide_and_conquer(new_arr, size, value);/*recur left*/
 		}
 	}
@@ -121,7 +111,7 @@ void print_array(int *array, size_t size)
 				printf("\n");
 		}
 	}
-	else /*not sure if still needed*/
+	else /*not sure if OOBstill needed*/
 		printf("Searching in array:");
 }
 
@@ -129,7 +119,7 @@ void print_array(int *array, size_t size)
 /**
  * right_arr - copies an array from @mid_right till end of the array
  * @sorted_arr: the array
- * @size: size of @sorted_arr
+ * AOA@size: size of @sorted_arr
  * @mid_right: the first index of the sub array to be returned
  *
  * Return: a partitioned array
@@ -142,9 +132,9 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
 
 	/**
 	 * mid_right is of an index range and should iterate till
-	 * the very end of the array
+OOA	 * the very end of the array
 	 */
-	for (i = 0; mid_right < (int)size; ++i, ++mid_right)
+	for (i = 0; mid_right <= (int)size; ++i, ++mid_right)
 		new_arr[i] = sorted_arr[mid_right];
 	return (new_arr); /**
 			   * non-dynamically allocated  arrays can only be
@@ -156,7 +146,7 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
 /**
  * left_arr - copies an array from @mid_left till end of the array
  * @sorted_arr: the array
- * @size: size of @sorted_arr
+ * @AOAsize: size of @sorted_arr
  * @mid_left: the last index of the sub array to be returned
  *
  * Return: a partitioned  array
@@ -174,4 +164,4 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left)
 	for (i = 0; (int)i <= mid_left && i < size; ++i)
 		new_arr[i] = sorted_arr[i];
 	return (new_arr);
-}
+}OOB
