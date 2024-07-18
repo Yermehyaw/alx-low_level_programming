@@ -55,19 +55,19 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 	int *new_arr;
 	int mid;
 
-	mid = size / 2; /*DONT REDUCE TO INDEX VALUE, see @Description */
-	/* Base-cases, forgive the many if, else ifs.... ;) */
-	if (sorted_arr[mid - 2] == value)
-		return (mid - 2); /*index left of the middle value*/
-	else if (sorted_arr[mid - 1] == value)
+	mid = (size / 2) + 0.5; /**
+				 * DONT REDUCE TO INDEX VALUE,
+				 * see @Description
+				 * +0.5 is used to round up values
+				 */
+	/* Base-case  */
+	if (sorted_arr[mid - 1] == value)
 		return (mid - 1); /*return the very index where the value is */
-	else if (sorted_arr[mid] == value)
-		return (mid); /*index right of the middle value*/
 	/* Recursive calls */
-	if (mid >= 1)
+	if (size >= 2) /*Only an array with at least 2 elems can be divided */
 	{
-		/*Split array call function recursively on tge appr subarray*/
-		if (sorted_arr[mid] < value)/*yes? take right hand side of arr*/
+		/*Split array call function recursively on the appr subarray*/
+		if (value > sorted_arr[mid - 1])/*yes? take right subarray*/
 		{
 			/**
 			 * the array is sorted in ascending order, so the if the
@@ -80,11 +80,17 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
 			size = size - mid; /*new size param*/
 			divide_and_conquer(new_arr, size, value);/*recur right*/
 		}
-		else if (sorted_arr[mid - 2] > value)/*yes?, take the left arr*/
+		else if (value < sorted_arr[mid - 1])/*yes?, take the left arr*/
 		{
 			print_array(sorted_arr, size);
-			new_arr = left_arr(sorted_arr, size, mid - 2);
-			size = size - (mid + 2);
+			if (mid < 2)
+				;
+			else
+			{
+				mid = mid - 2;
+			}
+			new_arr = left_arr(sorted_arr, size, mid);
+			size = mid + 1;
 			divide_and_conquer(new_arr, size, value);/*recur left*/
 		}
 	}
@@ -124,7 +130,7 @@ void print_array(int *array, size_t size)
  * right_arr - copies an array from @mid_right till end of the array
  * @sorted_arr: the array
  * @size: size of @sorted_arr
- * @mid_right: the index, right of the middle index
+ * @mid_right: the first index of the sub array to be returned
  *
  * Return: a partitioned array
  */
@@ -151,7 +157,7 @@ int *right_arr(int *sorted_arr, size_t size, int mid_right)
  * left_arr - copies an array from @mid_left till end of the array
  * @sorted_arr: the array
  * @size: size of @sorted_arr
- * @mid_left: the index, left of the middle index
+ * @mid_left: the last index of the sub array to be returned
  *
  * Return: a partitioned  array
  */
