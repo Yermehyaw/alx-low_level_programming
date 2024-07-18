@@ -164,4 +164,4 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left)
 	for (i = 0; (int)i <= mid_left && i < size; ++i)
 		new_arr[i] = sorted_arr[i];
 	return (new_arr);
-}OOB
+}
