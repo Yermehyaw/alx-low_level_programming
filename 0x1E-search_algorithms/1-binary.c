@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include "search_algos.h"
 
-int divide_and_conquer(int *sorted_arr, size_t size, int value);
-void print_array(int *array, size_t size);
-int *right_arr(int *sorted_arr, size_t size, int mid_right);
-int *left_arr(int *sorted_arr, size_t size, int mid_left);
+void print_array(int *array, int size, int mid);
 
 /**
  * binary_search - Implements the binary search algo. on an array
@@ -17,85 +14,33 @@ int *left_arr(int *sorted_arr, size_t size, int mid_left);
 
 int binary_search(int *array, size_t size, int value)
 {
-	int found;
+	int mid;
 
 	if (array == NULL || size == 0)
 		return (-1);
-	found = divide_and_conquer(array, size, value);
-	return (found);  /*if -1, value was not found in the array*/
-}
-
-
-/**
- * divide_and_conquer - Inplement the recursioms needed in the algorithm
- * @sorted_arr: array sorted in increasing order
- * @size: size of the array
- * @value: value to find in array
- *
- * Description: Please note that references made to @mid and @mid_idx in
- * the code refer to two different variables. @mid is the value at the middle
- * index derived when size is divided by 2, while @mid_idx is true index where
- * the middle value is found in the array. Thus @mid_idx = @mid - 1.
- * @mid isnt used directly due to dicripencies that occur as the array grows
- * smaller during successive recursive calls.
- * In summary:
- * array[mid] is the value right of the middle value
- * array[mid - 1] is the value middle value itself and;
- * array[mis - 2] is the value left of the middle value
- *
- * - recur means recursion
- *
- * Return: The index where the value is located, otherwise, -1
- */
-
-int divide_and_conquer(int *sorted_arr, size_t size, int value)
-{
-	int *new_arr;
-	int mid;
-
-	mid = size / 2;/*DONT REDUCE TO INDEX VALUE,* see @Description*/
-	/* Base-case  */
-	if (sorted_arr[mid - 1] == value)
-		return (mid - 1); /*return the very index where the value is */
-	/* Recursive calls */
-	if (size) /*Only an array with at least 2 elems can be divided */
+	mid = ((size / 2) + 0.5) - 1; /* +0.5 for apprxm. and -1 for indexing*/
+	while(size >= 1)
 	{
-		/*Split array call function recursively on the appr subarray*/
-		if (value > sorted_arr[mid - 1])/*yes? take right subarray*/
+		if (array[mid] == value)
+			return (mid);
+		print_array(array, size, mid);
+		if (value < array[mid]) /*Take left sub array*/
 		{
-			/**
-			 * the array is sorted in ascending order, so the if the
-			 * value right of the mid_idx is less than the value of
-			 * interest, it shows that the value of interest is
-			 * large and thus at the right hand side of the array
-			 */
-			printf("\nEntered left\n");
-			print_array(sorted_arr, size);
-			size = size - mid; /*new size param*/
-			new_arr = right_arr(sorted_arr, size, mid);
-			while (1)
-                        {
-                                printf("divide and conquer called in right_arr\n");
-                                break;
-                        }
-
-			divide_and_conquer(new_arr, size, value);/*recur right*/
-		}
-		else if (value < sorted_arr[mid - 1])/*yes?, take the left arr*/
-		{
-			printf("\nEntered right\n");
-			print_array(sorted_arr, size);
+			/*Adjust size and mid to fit the new sub array*/
 			size = mid;
-			new_arr = left_arr(sorted_arr, size, mid - 1);
-			while (1)
-			{
-				printf("divide anconquer called in left\n");
-				break;
-			}
-			divide_and_conquer(new_arr, size, value);/*recur left*/
+			mid = (mid - (size / 2) + 0.5) - 1; /*Sighs...*/
+		}
+		else if (value > array[mid])
+		{
+			size = size - (mid + 1);
+			mid = (mid - ((size / 2) + 0.5)) - 1;
 		}
 	}
-	return (-1);  /* control flow may never reach here ;) */
+	/*if mid goes out if bounds but array elem still remains*/
+	mid = mid + size; /*place mid to valud idx to check last elem in array*/
+	if (array[mid] == value)
+		return (mid);
+	return (-1); /*value is not in array*/
 }
 
 
@@ -103,76 +48,31 @@ int divide_and_conquer(int *sorted_arr, size_t size, int value)
  * print_array - prints an array of ints
  * @array: array
  * @size: size of array to print
- *
- * Description:
- * - rem means remaining
+ * @idx: index to print from
  */
-void print_array(int *array, size_t size)
-{
-	size_t i;
 
-	/*This printing format is a task req*/
-	if (size >= 1) /*If the array has at least one element*/
+void print_array(int *array, int size, int idx)
+{
+	int i;
+
+	if (idx < size) /* Its likely a left subarray */
 	{
-		printf("Searching in array: %d", array[0]);
-		for (i = 1; i < size; ++i) /*print rem  elem on the same line*/
+		printf("Searching in array:");
+		for (i = 0; i < size; ++i)
 		{
 			printf(", %d", array[i]);
-			if (i == (size - 1)) /*print a newline at the last iteration*/
+			if (i == (size - 1))
 				printf("\n");
 		}
 	}
-	else /*not sure if still needed*/
+	else if (idx > size) /* likely a right sub array*/
+	{
 		printf("Searching in array:");
-}
-
-
-/**
- * right_arr - copies an array from @mid_right till end of the array
- * @sorted_arr: the array
- * @size: size of @sorted_arr
- * @mid_right: the first index of the sub array to be returned
- *
- * Return: a partitioned array
- */
-
-int *right_arr(int *sorted_arr, size_t size, int mid_right)
-{
-	static int new_arr[10]; /* 10 is just a placeholder */
-	size_t i;
-
-	/**
-	 * mid_right is of an index range and should iterate till
-	 * the very end of the array
-	 */
-	for (i = 0; mid_right <= (int)size; ++i, ++mid_right)
-		new_arr[i] = sorted_arr[mid_right];
-	return (new_arr); /**
-			   * non-dynamically allocated  arrays can only be
-			   * returned if declared as static
-			   */
-}
-
-
-/**
- * left_arr - copies an array from @mid_left till end of the array
- * @sorted_arr: the array
- * @size: size of @sorted_arr
- * @mid_left: the last index of the sub array to be returned
- *
- * Return: a partitioned  array
- */
-
-int *left_arr(int *sorted_arr, size_t size, int mid_left)
-{
-	static int new_arr[10]; /* 10 is just a placeholder */
-	size_t i;
-
-	/**
-	 * mid_left is of an index range, thus <= is used to ensure the
-	 * very last value in the array is copied
-	 */
-	for (i = 0; (int)i <= mid_left && i < size; ++i)
-		new_arr[i] = sorted_arr[i];
-	return (new_arr);
+		for (i = idx; i > size; --i)
+		{
+			printf(", %d", array[i]);
+			if ((i - 1) == size)
+				printf("\n");
+		}
+	}
 }
