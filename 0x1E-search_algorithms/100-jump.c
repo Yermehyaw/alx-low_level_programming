@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <mth.h>
+#include <math.h>
 #include "search_algos.h"
 
-int linear_search(int *array, size_t idx, size_t size, int value);
+int linear_search_jump(int *array, size_t idx, size_t size, int value);
 
 /**
  * jump_search - Implemets the jump search algorithm for finding a give value
@@ -16,7 +16,7 @@ int linear_search(int *array, size_t idx, size_t size, int value);
 
 int jump_search(int *array, size_t size, int value)
 {
-	size_t i, j, ret, jump_step;
+	int i, j, ret, jump_step;
 
 	i = j = ret = 0;
 	jump_step = sqrt(size);
@@ -24,32 +24,32 @@ int jump_search(int *array, size_t size, int value)
 		return (-1);
 	if (size == 1)
 	{
-		printf("Value checked array[0] = [%d]\n", i, array[i]);
+		printf("Value checked array[%d] = [%d]\n", i, array[i]);
 		printf("Value checked array[%d] = [%d]\n", j, array[j]);
 		return (0); /* index for an array with one elem */
 	}
 	j += jump_step;
-	while (j < size)
+	while (j < (int)size)
 	{
-		printf("Value checked array[0] = [%d]\n", i, array[i]);
+		printf("Value checked array[%d] = [%d]\n", i,  array[i]);
 		printf("Value checked array[%d] = [%d]\n", j, array[j]);
 		if (array[i] <= value && array[j] >= value)
 		{
-			printf("Value found between indexes [%d] and
+			printf("Value found between indexes [%d] and\
 					[%d]\n", i, j);
-			ret = linear_search(array, i, size, value);
+			ret = linear_search_jump(array, i, size, value);
 			return (ret);
 		}
 		i += jump_step; /* i jumps by one step */
 		j += jump_step; /* j jumps by one step */
-		if (j > size) /* j has exceeded index bounds */
+		if (j > (int)size) /* j has exceeded index bounds */
 		{
 			j -= jump_step; /* bring j back within index bounds */
 			if (array[j] < value)
 			{
-				printf("Value found between indexes [%d] and
-						[%d]\n", j, size - 1);
-				ret = linear_search(array, j, size, value);
+				printf("Value found between indexes [%d] and\
+						[%ld]\n", j, size - 1);
+				ret = linear_search_jump(array, j, size, value);
 				return (ret);
 
 			}
@@ -60,7 +60,8 @@ int jump_search(int *array, size_t size, int value)
 
 
 /**
- * linear_search - implement the linear search algorithm needed in jumo search
+ * linear_search_jump - implement the linear search algorithm needed in jump
+ *  search
  * @array: an array of ints
  * @idx: index from which linear searching is to begin
  * @size:size of the array
@@ -70,7 +71,7 @@ int jump_search(int *array, size_t size, int value)
  */
 
 
-int linear_search(int *array, size_t idx, size_t size, int value)
+int linear_search_jump(int *array, size_t idx, size_t size, int value)
 {
 	for (; idx < size; ++idx) /*init part of a for loop can be empty */
 	{
@@ -79,4 +80,3 @@ int linear_search(int *array, size_t idx, size_t size, int value)
 	}
 	return (-1);
 }
-
