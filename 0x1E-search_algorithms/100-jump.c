@@ -29,10 +29,10 @@ int jump_search(int *array, size_t size, int value)
 		return (0); /* index for an array with one elem */
 	}
 	j += jump_step;
+	printf("Value checked array[%d] = [%d]\n", i,  array[i]);
+	printf("Value checked array[%d] = [%d]\n", j, array[j]);
 	while (j < (int)size)
 	{
-		printf("Value checked array[%d] = [%d]\n", i,  array[i]);
-		printf("Value checked array[%d] = [%d]\n", j, array[j]);
 		if (array[i] <= value && array[j] >= value)
 		{
 			printf("Value found between indexes [%d] and [%d]\n",
@@ -42,18 +42,21 @@ int jump_search(int *array, size_t size, int value)
 		}
 		i += jump_step; /* i jumps by one step */
 		j += jump_step; /* j jumps by one step */
-		if (j > (int)size) /* j has exceeded index bounds */
-		{
-			j -= jump_step; /* bring j back within index bounds */
-			if (array[j] < value)
-			{
-				printf("Value found between indexes");
-				printf(" [%d] and [%ld]\n", j, size - 1);
-				ret = linear_search_jump(array, j, size, value);
-				return (ret);
-
-			}
-		}
+/**
+ * Letting j exceed index bounds
+ *		if (j > (int)size) / j has exceeded index bounds /
+ *		{
+ *			j -= jump_step; / bring j back within index bounds /
+ *			if (array[j] < value)
+ *			{
+ *				printf("Value found between indexes");
+ *				printf(" [%d] and [%ld]\n", j, size - 1);
+ *				ret = linear_search_jump(array, j, size, value);
+ *				return (ret);
+ *
+ *			}
+ *		}
+ */
 	}
 	return (-1);
 }
@@ -75,6 +78,7 @@ int linear_search_jump(int *array, size_t idx, size_t size, int value)
 {
 	for (; idx < size; ++idx) /*init part of a for loop can be empty */
 	{
+		printf("Value checked array[%ld] = [%d]\n", idx, array[idx]);
 		if (array[idx] == value)
 			return (idx);
 	}
