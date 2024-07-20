@@ -42,21 +42,6 @@ int jump_search(int *array, size_t size, int value)
 		}
 		i += jump_step; /* i jumps by one step */
 		j += jump_step; /* j jumps by one step */
-/**
- * Letting j exceed index bounds
- *		if (j > (int)size) / j has exceeded index bounds /
- *		{
- *			j -= jump_step; / bring j back within index bounds /
- *			if (array[j] < value)
- *			{
- *				printf("Value found between indexes");
- *				printf(" [%d] and [%ld]\n", j, size - 1);
- *				ret = linear_search_jump(array, j, size, value);
- *				return (ret);
- *
- *			}
- *		}
- */
 	}
 	return (-1);
 }
