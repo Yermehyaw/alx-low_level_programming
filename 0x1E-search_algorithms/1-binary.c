@@ -19,7 +19,7 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return (-1);
 	mid = ((size / 2) + 0.5) - 1; /* +0.5 for apprxm. and -1 for indexing*/
-	while(size >= 1)
+	while (size >= 1)
 	{
 		if (array[mid] == value)
 			return (mid);
